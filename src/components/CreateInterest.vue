@@ -43,7 +43,7 @@ export default {
     },
     methods:{
         checkForm() {
-            axios.post(`${process.env.VUE_APP_BASE_URL}/api/interest/`, {
+            axios.post(`https://mutualenigma.herokuapp.com/api/interest/`, {
                 product: this.product.id,
                 name: this.title,
                 email: this.email,

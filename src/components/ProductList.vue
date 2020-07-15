@@ -43,7 +43,7 @@ export default {
   },
   methods: {
       getItems() {
-          axios.get('http://127.0.0.1:8000/api/products/')
+          axios.get('https://mutualenigma.herokuapp.com/api/products/')
           .then(res => {
             this.products = res.data
             return res.data

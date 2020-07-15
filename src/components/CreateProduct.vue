@@ -62,7 +62,7 @@ export default {
             this.file = this.$refs.file.files[0];
         },
         checkForm() {
-            axios.post(`${process.env.VUE_APP_BASE_URL}/api/products/`, {
+            axios.post(`https://mutualenigma.herokuapp.com/api/products/`, {
                 user: localStorage.getItem("user-id"),
                 name: this.title,
                 price: this.price,

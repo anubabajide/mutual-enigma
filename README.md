@@ -1,4 +1,4 @@
-# frontend
+# Mutual Enigma
 
 ## Project setup
 ```

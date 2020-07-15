@@ -41,7 +41,7 @@ export default {
   },
   methods: {
       login() {
-          axios.post(`${process.env.VUE_APP_BASE_URL}/auth/`, {
+          axios.post(`https://mutualenigma.herokuapp.com/auth/`, {
              username: this.username,
              password: this.password 
           })
