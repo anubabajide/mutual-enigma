@@ -8,13 +8,13 @@
             <b-collapse id="nav-collapse" is-nav>
 
                 <b-navbar-nav class="">
-                    <b-nav-form v-show="!token" @submit.prevent="login">
+                    <b-nav-form v-if="!token" @submit.prevent="login">
                         <b-form-input id="username" name="username" size="sm" class="mr-sm-2" placeholder="Username" v-model="username"></b-form-input>
                         <b-form-input id="password" name="password" type="password" size="sm" class="mr-sm-2" placeholder="Password" v-model="password"></b-form-input>
                         <b-button size="sm" class="my-2 my-sm-0" type="submit">Login</b-button>
                     </b-nav-form>
 
-                    <b-nav-item-dropdown v-show="token" right>
+                    <b-nav-item-dropdown v-if="token" right>
                         <template v-slot:button-content>
                             <em>User</em>
                         </template>
@@ -41,7 +41,7 @@ export default {
   },
   methods: {
       login() {
-          axios.post(`https://mutualenigma.herokuapp.com/auth/`, {
+          axios.post(`http://localhost:8000/auth/`, {
              username: this.username,
              password: this.password 
           })

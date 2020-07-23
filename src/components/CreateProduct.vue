@@ -42,6 +42,7 @@
 
 <script>
 import axios from 'axios'
+import { TokenService } from '../storage/service'
 
 export default {
     // components: [
@@ -54,7 +55,8 @@ export default {
             descriptions: null,
             shortDescription: null,
             image: null,
-            location: null 
+            location: null,
+            token: TokenService.getToken() 
         }
     },
     methods:{
@@ -62,7 +64,7 @@ export default {
             this.file = this.$refs.file.files[0];
         },
         checkForm() {
-            axios.post(`https://mutualenigma.herokuapp.com/api/products/`, {
+            const data = {
                 user: localStorage.getItem("user-id"),
                 name: this.title,
                 price: this.price,
@@ -70,9 +72,15 @@ export default {
                 short_description: this.shortDescription,
                 image: this.file,
                 location: this.location 
-            })
+            }
+            const options = {
+                headers: {
+                    'Authorization': 'Token ' + localStorage.getItem('user-token')
+                }
+            }
+            axios.post(`http://localhost:8000/api/products/`, data, options)
             .then(res => console.log(res))
-            .catch(res => console.log(res))
+            .catch(err => console.log(err))
         }
     }
 }
